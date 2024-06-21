@@ -1,3 +1,5 @@
+import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -31,81 +33,111 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: App000(),
+      home: HomeScreen(),
     );
   }
 }
 
-class App000 extends StatelessWidget {
-  const App000({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan[700],
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              backgroundImage: AssetImage('images/sukuna.jpg'),
-              radius: 60,
-            ),
-            Text(
-              'sukuna',
-              style: TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            ),
-            Text(
-              'professional killer',
-              style: TextStyle(fontSize: 30, color: Colors.white),
-            ),
-            Card(
-              margin: EdgeInsets.all(10),
-              color: Colors.white,
-              child: ListTile(
-                leading: Icon(
-                  Icons.phone,
-                  color: Colors.cyan,
-                ),
-                title: Text(
-                  '06 00 01 01 02 03',
-                  style: TextStyle(color: Colors.black87, fontSize: 23),
-                ),
-              ),
-            ),
-            Card(
-              color: Colors.white,
-              margin: EdgeInsets.all(10),
-              child: ListTile(
-                leading: Icon(
-                  Icons.mail,
-                  color: Colors.cyan,
-                ),
-                title: Text(
-                  'sukuna100sk@gmail.com',
-                  style: TextStyle(fontSize: 19),
-                ),
-              ),
-            ),
-            Container(
-              height: 150,
-              width: 100,
-              child: Row(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
                 children: [
-                  Image.asset(
-                    'images/hhhh.jpg',
-                    height: 400,
-                    width: 100,
+                  Container(
+                    height: 178,
+                    width: 128,
+                    child: Image(
+                      image: AssetImage('images/ahmd.png'),
+                      fit: BoxFit.contain,
+                    ),
+                    decoration: BoxDecoration(
+                        color: Colors.orange,
+                        borderRadius: BorderRadius.circular(16)),
                   ),
+                  SizedBox(width: 34),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Dr ahmd',
+                        style: TextStyle(
+                          fontSize: 34,
+                        ),
+                      ),
+                      Text(
+                        'Hert Specialist',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey[700],
+                        ),
+                      ),
+                      SizedBox(width: 16),
+                      Row(
+                        children: [
+                          customiconStyl(icon: Icons.mail),
+                          SizedBox(width: 8),
+                          customiconStyl(icon: Icons.phone),
+                          SizedBox(width: 8),
+                          customiconStyl(icon: Icons.video_call),
+                        ],
+                      ),
+                    ],
+                  )
                 ],
               ),
-            ),
-          ],
+              Text(
+                'About',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Text(
+                'En un pequeño pueblo rodeado de montañas, vivía un anciano llamado Don Gregorio. Cada mañana, salía de su casa con una sonrisa, saludando a todos los vecinos con un entusiasmo contagioso. Su casa, ubicada al final de una calle empedrada, era conocida por el jardín lleno de flores de colores vibrantes que cuidaba con esmero',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w300,
+                  color: Colors.grey[700],
+                ),
+              ),
+              Row(),
+            ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+class customiconStyl extends StatelessWidget {
+  const customiconStyl({
+    super.key,
+    required this.icon,
+  });
+  final IconData icon;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Icon(
+        icon,
+        color: Colors.orangeAccent,
+        size: 32,
+      ),
+      height: 48,
+      width: 48,
+      decoration: BoxDecoration(
+          color: Colors.deepOrange[50],
+          borderRadius: BorderRadius.circular(16)),
     );
   }
 }
